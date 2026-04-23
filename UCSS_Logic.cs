@@ -42,13 +42,13 @@ namespace UCSS_Project
             if (conflict != null)
             {
                 if (conflict.Room.Id == room.Id)
-                    return $"EROARE: Sala {room.Name} este ocupata la ora {timeSlot}!";
+                    return $"ERROR: Room {room.Name} is already occupied at {timeSlot}!";
                 
-                return $"EROARE: Profesorul {teacher.Name} are deja curs la ora {timeSlot}!";
+                return $"EROARE: Teacher {teacher.Name} already has a class at {timeSlot}!";
             }
 
             _entries.Add(new ScheduleEntry { Course = course, Teacher = teacher, Room = room, TimeSlot = timeSlot });
-            return "SUCCES: Curs programat corect.";
+            return "SUCCESS: Course scheduled correctly.";
         }
     }
 
@@ -58,12 +58,12 @@ namespace UCSS_Project
             
             // Exemplu de date
             var t1 = new Teacher { Id = 1, Name = "Popescu Ion" };
-            var r1 = new Room { Id = 101, Name = "Sala 201" };
-            var c1 = new Course { Id = 1, Name = "Programare C#" };
+            var r1 = new Room { Id = 101, Name = "Room 201" };
+            var c1 = new Course { Id = 1, Name = "Operating systems" };
 
-            Console.WriteLine(myScheduler.AddSchedule(c1, t1, r1, "Luni 08:00"));
+            Console.WriteLine(myScheduler.AddSchedule(c1, t1, r1, "Monday 08:00"));
             // Incercam sa punem alt curs in aceeasi sala la aceeasi ora
-            Console.WriteLine(myScheduler.AddSchedule(new Course{Id=2}, new Teacher{Id=2}, r1, "Luni 08:00"));
+            Console.WriteLine(myScheduler.AddSchedule(new Course{Id=2}, new Teacher{Id=2}, r1, "Monday 08:00"));
         }
     }
 }
